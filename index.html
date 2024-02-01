@@ -34,9 +34,13 @@
     }
 
 
-      #views {
-      float: right;
-      }
+      #visitCounter {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: white;
+            }
         
 
     .content {
@@ -117,7 +121,7 @@
     
 </head>
 <body>
-  <div id="views">0</div>
+  <div id="visitCounter"></div>
     <div class="content">
         <div class="navbar-top">
             <div class="title">
@@ -251,13 +255,12 @@
         </div>
     </div>
     <script>
-          function incrementViews() {
-      var viewCount = parseInt(document.getElementById('views').innerHTML);
-      viewCount++;
-      document.getElementById('views').innerHTML = viewCount;
-    }
-
-    setInterval(incrementViews, 3000);
+          function incrementVisitCount() {
+                let visitCount = localStorage.getItem('visitCount') || 0;
+                visitCount++;
+                localStorage.setItem('visitCount', visitCount);
+                document.getElementById('visitCounter').innerHTML = `Visits: ${visitCount}`;
+        }
     </script>
   
     <script>
